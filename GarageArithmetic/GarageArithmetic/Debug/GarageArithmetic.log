@@ -1,0 +1,7 @@
+﻿  GarageArithmetic.cpp
+C:\Users\10058\Documents\mm32\GitHub\GarageArithmetic\GarageArithmetic\GarageArithmetic\GarageArithmetic.cpp(67,11): warning C4101: “line”: 未引用的局部变量
+C:\Users\10058\Documents\mm32\GitHub\GarageArithmetic\GarageArithmetic\GarageArithmetic\GarageArithmetic.cpp(67,17): warning C4101: “row”: 未引用的局部变量
+C:\Users\10058\Documents\mm32\GitHub\GarageArithmetic\GarageArithmetic\GarageArithmetic\GarageArithmetic.cpp(67,6): warning C4101: “num”: 未引用的局部变量
+C:\Users\10058\Documents\mm32\GitHub\GarageArithmetic\GarageArithmetic\GarageArithmetic\GarageArithmetic.cpp(40): warning C4715: “judgementLine4Zero”: 不是所有的控件路径都返回值
+C:\Users\10058\Documents\mm32\GitHub\GarageArithmetic\GarageArithmetic\GarageArithmetic\GarageArithmetic.cpp(55): warning C4715: “judgementRow4Zero”: 不是所有的控件路径都返回值
+  GarageArithmetic.vcxproj -> C:\Users\10058\Documents\mm32\GitHub\GarageArithmetic\GarageArithmetic\Debug\GarageArithmetic.exe

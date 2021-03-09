@@ -16,21 +16,21 @@ void bubble_sort(int array_bubble[]) {
 }
 
 //select the num in matrix
-void selectNum(int arrayOneDim[], int matrixTwoDim[][4],int zeroOneArray[][4], int n) {
+void selectNum(int arrayOneDim[], int matrixTwoDim[][4], int n) {
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			if (arrayOneDim[n] == matrixTwoDim[i][j]) {
-				zeroOneArray[i][j] = 0;
+				matrixTwoDim[i][j] = 0;
 			}
 		}
 	}
 }
 
-bool judgementLine4Zero(int zeroOneArray[][4]) {
+bool judgementLine4Zero(int matrixTwoDim[][4]) {
 	int lineJudgement = 0;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			if (zeroOneArray[i][j] == 0) {
+			if (matrixTwoDim[i][j] == 0) {
 				lineJudgement++;
 			}
 		}
@@ -42,11 +42,11 @@ bool judgementLine4Zero(int zeroOneArray[][4]) {
 	}
 }
 
-bool judgementRow4Zero(int zeroOneArray[][4]) {
+bool judgementRow4Zero(int matrixTwoDim[][4]) {
 	int rowJudgement = 0;
 	for (int j = 0; j < 4; j++) {
 		for (int i = 0; i < 4; i++) {
-			if (zeroOneArray[i][j] == 0) {
+			if (matrixTwoDim[i][j] == 0) {
 				rowJudgement++;
 			}
 		}
@@ -58,14 +58,14 @@ bool judgementRow4Zero(int zeroOneArray[][4]) {
 	}
 }
 
-bool judementLine3Zero(int zeroOneArray[][4]) {
+bool judementLine3Zero(int matrixTwoDim[][4]) {
 	int lineJudgement = 0;
 	int lineNum = 0;
 	int zeroLocation = 1111;
 	int zeroLocationBefore = 0;
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
-			if (zeroOneArray[i][j] == 0) {
+			if (matrixTwoDim[i][j] == 0) {
 				lineJudgement++;
 				zeroLocation = zeroLocation - 1 << (4 - j);
 			}
@@ -85,14 +85,14 @@ bool judementLine3Zero(int zeroOneArray[][4]) {
 	}
 }
 
-bool judementRow3Zero(int zeroOneArray[][4]) {
+bool judementRow3Zero(int matrixTwoDim[][4]) {
 	int rowJudgement = 0;
 	int rowNum = 0;
 	int zeroLocation = 1111;
 	int zeroLocationBefore = 0;
 	for (int j = 0; j < 4; j++) {
 		for (int i = 0; i < 4; i++) {
-			if (zeroOneArray[i][j] == 0) {
+			if (matrixTwoDim[i][j] == 0) {
 				rowJudgement++;
 				zeroLocation = zeroLocation - 1 << (4 - i);
 			}
@@ -112,18 +112,17 @@ bool judementRow3Zero(int zeroOneArray[][4]) {
 	}
 }
 
-bool judgement(int zeroOneArray[][4]) {
-	return judgementLine4Zero(zeroOneArray) 
-		&& judgementRow4Zero(zeroOneArray)
-		&& judementLine3Zero(zeroOneArray)
-		&& judementRow3Zero(zeroOneArray);
+bool judgement(int matrixTwoDim[][4]) {
+	return judgementLine4Zero(matrixTwoDim)
+		&& judgementRow4Zero(matrixTwoDim)
+		&& judementLine3Zero(matrixTwoDim)
+		&& judementRow3Zero(matrixTwoDim);
 }
 
 int main() {
 	bool flag = true;
-	int matrix[4][4] = { {4,8,7,15},{7,9,17,14},{6,9,12,8},{6,7,14,6} };
-//	int matrix[4][4] = { {6,5,7,5},{5,9,8,12},{10,8,11,13},{13,15,12,8} };
-	int matrixBool[4][4] = { {1,1,1,1},{1,1,1,1},{1,1,1,1},{1,1,1,1} };
+//	int matrix[4][4] = { {4,8,7,15},{7,9,17,14},{6,9,12,8},{6,7,14,6} };
+	int matrix[4][4] = { {6,5,7,5},{5,9,8,12},{10,8,11,13},{13,15,12,8} };
 	int matrixToArray[16];
 
 	int a = 0;
@@ -147,8 +146,8 @@ int main() {
 	cout << '\n';
 
 	for (int i = 0; i < 16; i++) {
-		selectNum(matrixToArray, matrix, matrixBool, i);
-		if (!judgement(matrixBool)) {
+		selectNum(matrixToArray, matrix, i);
+		if (!judgement(matrix)) {
 			result = matrixToArray[i];
 			break;
 		}

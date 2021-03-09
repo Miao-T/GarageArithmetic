@@ -36,21 +36,21 @@
    bubble_sort(matrixToArray);
    ~~~
 
-3. 从最大值matrixToArray[0]开始，假定最终答案是当前最大值，在二维数组中删去这个数，将这个数所在位置的值置为0
+3. 从最大值matrixToArray[0]​开始，假定最终答案是当前最大值，则必定有一辆车停在该值的位置，其他三辆车停在时间小于当前最大值的三个位置；将二维数组中当前最大值的数值置为0
 
    ~~~C
-   void selectNum(int arrayOneDim[], int matrixTwoDim[][4],int zeroOneArray[][4], int n) {
+   void selectNum(int arrayOneDim[], int matrixTwoDim[][4], int n) {
    	for (int i = 0; i < 4; i++) {
    		for (int j = 0; j < 4; j++) {
    			if (arrayOneDim[n] == matrixTwoDim[i][j]) {
-   				zeroOneArray[i][j] = 0;
+   				matrixTwoDim[i][j] = 0;
    			}
    		}
    	}
    }
    ~~~
 
-4. 判断此时的二维数组是否可以满足题目条件（一个车库只能停一辆车）
+4. 判断此时的二维数组是否可以满足题目条件（一个车库只能停一辆车），即此时非0值的位置上能否停下三辆车
 
    对于$4 × 4$的二维数组有4种情况不能满足题目条件：
 
@@ -66,12 +66,12 @@
    bool judementRow3Zero(int zeroOneArray[][4]);
    ~~~
 
-5. 重复第3、第4步的操作，直到第4步的判断无法满足题目条件，此时在第3步中删去的值就是答案
+5. 重复第3、第4步的操作，直到第4步的判断无法满足题目条件，最后一个在第3步中删去的值就是答案
 
    ~~~C
    for (int i = 0; i < 16; i++) {
-   	selectNum(matrixToArray, matrix, matrixBool, i);
-   	if (!judgement(matrixBool)) {
+   	selectNum(matrixToArray, matrix, i);
+   	if (!judgement(matrix)) {
    		result = matrixToArray[i];
    		break;
    	}

@@ -16,13 +16,13 @@
 
 1. 建立二维数组
 
-   ~~~C
+   ~~~C++
    int matrix = { {4,8,7,15},{7,9,17,14},{6,9,12,8},{6,7,14,6} }
    ~~~
 
 2. 建立一维数组，将二维数组中的值付给一维数组，并对一维数组进行从大到小的冒泡排序
 
-   ~~~C
+   ~~~c++
    int matrixToArray[16];
    
    int a = 0;
@@ -38,7 +38,7 @@
 
 3. 从最大值matrixToArray[0]​开始，假定最终答案是当前最大值，则必定有一辆车停在该值的位置，其他三辆车停在时间小于当前最大值的三个位置；将二维数组中当前最大值的数值置为0
 
-   ~~~C
+   ~~~C++
    void selectNum(int arrayOneDim[], int matrixTwoDim[][4], int n) {
    	for (int i = 0; i < 4; i++) {
    		for (int j = 0; j < 4; j++) {
@@ -52,23 +52,23 @@
 
 4. 判断此时的二维数组是否可以满足题目条件（一个车库只能停一辆车），即此时非0值的位置上能否停下三辆车
 
-   对于$4 × 4$的二维数组有4种情况不能满足题目条件：
+   对于4 × 4​的二维数组有4种情况不能满足题目条件：
 
    - 有至少一行是4个0
    - 有至少一列是4个0
    - 有至少两行是3个0，且3个0的位置相同
    - 有至少两列是3个0，且3个0的位置相同
 
-   ~~~C
-   bool judgementLine4Zero(int zeroOneArray[][4]);
-   bool judgementRow4Zero(int zeroOneArray[][4]);
-   bool judementLine3Zero(int zeroOneArray[][4]);
-   bool judementRow3Zero(int zeroOneArray[][4]);
+   ~~~C++
+   bool judgementLine4Zero(int matrixTwoDim[][4]);
+   bool judgementRow4Zero(int matrixTwoDim[][4]);
+   bool judementLine3Zero(int matrixTwoDim[][4]);
+   bool judementRow3Zero(int matrixTwoDim[][4]);
    ~~~
 
 5. 重复第3、第4步的操作，直到第4步的判断无法满足题目条件，最后一个在第3步中删去的值就是答案
 
-   ~~~C
+   ~~~C++
    for (int i = 0; i < 16; i++) {
    	selectNum(matrixToArray, matrix, i);
    	if (!judgement(matrix)) {
